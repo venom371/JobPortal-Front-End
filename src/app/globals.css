@@ -3,20 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 100, 55, 5;
+        --background-start-rgb: 49, 74, 42;
+        --background-end-rgb: 0, 157, 0;
+    }
 }
 
-body {
+/* body {
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
@@ -24,10 +24,87 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
-}
+} */
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+    .text-balance {
+        text-wrap: balance;
+    }
+}
+
+.home {
+    background-color: bisque;
+    height: 100vh;
+    width: 100vw;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.signInBox {
+    padding: 1em;
+    /* min-height: 200px; */
+    background-color: aquamarine;
+    height: 22em;
+    width: 25em;
+    border: 2px solid;
+    border-color: rgb(68, 62, 62);
+    border-radius: 7px;
+    /* display: flex;
+    flex-direction: column; */
+}
+
+@media screen and (min-height: 700px) {}
+
+.signInForm {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.submitButton {
+    padding: 5px;
+    width: 8em;
+    background-color: blue;
+    color: aliceblue;
+    border: 1px solid;
+    border-color: rgb(68, 62, 62);
+    border-radius: 7px;
+}
+.submitButton:hover {
+    background-color: aliceblue;
+    color:blue;
+}
+.btnDiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 6px;
+}
+.formValue {
+    outline: none;
+    padding: 0 4px;
+    border-radius: 5px;
+    border: 1.5px solid cadetblue;
+}
+.radioInput {
+    display: flex;
+    flex-direction: row;
+}
+
+.textInput {
+    display: flex;
+    flex-direction: column;
+}
+
+.formItem {
+    margin-bottom: 5px;
+}
+
+.femaleRadioBtn {
+    margin-left: 3px;
+}
+
+input[type="radio"]:checked {
+    accent-color: grey;
+    
 }
