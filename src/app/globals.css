@@ -2,61 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --foreground-rgb: 0, 0, 0;
-    --background-start-rgb: 214, 219, 220;
-    --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-    :root {
-        --foreground-rgb: 100, 55, 5;
-        --background-start-rgb: 49, 74, 42;
-        --background-end-rgb: 0, 157, 0;
-    }
-}
-
-/* body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-} */
-
 @layer utilities {
     .text-balance {
         text-wrap: balance;
     }
 }
 
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
 .home {
     background-color: bisque;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     display: grid;
     justify-items: center;
     align-items: center;
+    overflow: auto;
 }
 
-.signInBox {
-    padding: 1em;
+.signUpBox {
+    padding: 16px;
     /* min-height: 200px; */
     background-color: aquamarine;
-    height: 22em;
-    width: 25em;
+    height: 330px;
+
+    width: 270.8px;
     border: 2px solid;
     border-color: rgb(68, 62, 62);
-    border-radius: 7px;
+    border-radius: 20px;
     /* display: flex;
     flex-direction: column; */
 }
 
+
+
 @media screen and (min-height: 700px) {}
 
-.signInForm {
+.signUpForm {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -71,21 +56,25 @@
     border-color: rgb(68, 62, 62);
     border-radius: 7px;
 }
+
 .submitButton:hover {
     background-color: aliceblue;
-    color:blue;
+    color: blue;
 }
+
 .btnDiv {
     display: flex;
     justify-content: center;
     margin-top: 6px;
 }
+
 .formValue {
     outline: none;
     padding: 0 4px;
     border-radius: 5px;
     border: 1.5px solid cadetblue;
 }
+
 .radioInput {
     display: flex;
     flex-direction: row;
@@ -94,9 +83,6 @@
 .textInput {
     display: flex;
     flex-direction: column;
-}
-
-.formItem {
     margin-bottom: 5px;
 }
 
@@ -106,5 +92,5 @@
 
 input[type="radio"]:checked {
     accent-color: grey;
-    
+
 }

@@ -1,12 +1,13 @@
 import dynamic from 'next/dynamic';
 
+const SignUpComponent = dynamic(() => import('./Components/SignUp'));
 const SignInComponent = dynamic(() => import('./Components/SignIn'));
+const Whyyyyyy = dynamic(() => import('./Components/AddImages'));
 
 export default function Home() {
-    let a = "hello mihir";
-  return (
-    <div className='home'>
-        <SignInComponent/>
-    </div>
-  );
+    return (
+        <div className='home'>
+            <Whyyyyyy />
+        </div>
+    );
 }

@@ -1,15 +1,13 @@
 'use client'
 
 import React, { useState } from 'react';
+import Link from 'next/link';
+import './SignIn.css';
 
-export default function SignIn() {
+export default function SignUp() {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        gender: '',
         email: '',
-        phoneNumber: '',
-        password: '',
+        password: ''
     });
 
     const handleChange = (e) => {
@@ -29,63 +27,11 @@ export default function SignIn() {
         <div className='signInBox'>
             <form className='signInForm' onSubmit={handleSubmit}>
                 <div className='formItem textInput'>
-                    <label>First Name:</label>
-                    <input className='formValue'
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className='formItem textInput'>
-                    <label>Last Name:</label>
-                    <input className='formValue'
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className='formItem radioInput'>
-                    <div className='maleRadioBtn'>
-                        <label>Male </label>
-                        <input
-                            type="radio"
-                            name="gender"
-                            value={formData.gender}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                    <div className='femaleRadioBtn'>
-                        <label>Female </label>
-                        <input
-                            type="radio"
-                            name="gender"
-                            value={formData.gender}
-                            onChange={handleChange}
-                            required
-                        />
-                    </div>
-                </div>
-                <div className='formItem textInput'>
                     <label>Email ID:</label>
                     <input className='formValue'
                         type="email"
                         name="email"
                         value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className='formItem textInput'>
-                    <label>Phone Number:</label>
-                    <input className='formValue'
-                        type="text"
-                        name="phoneNumber"
-                        value={formData.phoneNumber}
                         onChange={handleChange}
                         required
                     />
@@ -100,7 +46,12 @@ export default function SignIn() {
                         required
                     />
                 </div>
-                <div className='btnDiv'><button className='submitButton' type="submit">Create account</button></div>
+                <div className='btnDiv'>
+                    <button className='submitButton' type="submit">Sign in</button>
+                </div>
+                <div className='formItem'>
+                    <Link className='newUserLink' href="/SignUp">New User? Create Account</Link>
+                </div>
             </form>
         </div>
     );
