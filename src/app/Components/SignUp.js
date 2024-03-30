@@ -1,15 +1,17 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
+import React, { useState } from "react";
+import RightArrow from "../Images/RightArrow";
+import LeftArrow from "../Images/LeftArrow";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
-        firstName: '',
-        lastName: '',
-        gender: '',
-        email: '',
-        phoneNumber: '',
-        password: '',
+        firstName: "",
+        lastName: "",
+        gender: "",
+        email: "",
+        phoneNumber: "",
+        password: "",
     });
 
     const handleChange = (e) => {
@@ -22,15 +24,16 @@ export default function SignUp() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
+        console.log("Form Data:", formData);
     };
 
     return (
-        <div className='signUpBox'>
-            <form className='signUpForm' onSubmit={handleSubmit}>
-                <div className='formItem textInput'>
+        <div className="signUpBox">
+            <form className="signUpForm" onSubmit={handleSubmit}>
+                <div className="formItem textInput">
                     <label>First Name:</label>
-                    <input className='formValue'
+                    <input
+                        className="formValue"
                         type="text"
                         name="firstName"
                         value={formData.firstName}
@@ -38,9 +41,10 @@ export default function SignUp() {
                         required
                     />
                 </div>
-                <div className='formItem textInput'>
+                <div className="formItem textInput">
                     <label>Last Name:</label>
-                    <input className='formValue'
+                    <input
+                        className="formValue"
                         type="text"
                         name="lastName"
                         value={formData.lastName}
@@ -48,8 +52,8 @@ export default function SignUp() {
                         required
                     />
                 </div>
-                <div className='formItem radioInput'>
-                    <div className='maleRadioBtn'>
+                <div className="formItem radioInput">
+                    <div className="maleRadioBtn">
                         <label>Male </label>
                         <input
                             type="radio"
@@ -59,7 +63,7 @@ export default function SignUp() {
                             required
                         />
                     </div>
-                    <div className='femaleRadioBtn'>
+                    <div className="femaleRadioBtn">
                         <label>Female </label>
                         <input
                             type="radio"
@@ -70,9 +74,10 @@ export default function SignUp() {
                         />
                     </div>
                 </div>
-                <div className='formItem textInput'>
+                <div className="formItem textInput">
                     <label>Email ID:</label>
-                    <input className='formValue'
+                    <input
+                        className="formValue"
                         type="email"
                         name="email"
                         value={formData.email}
@@ -80,9 +85,10 @@ export default function SignUp() {
                         required
                     />
                 </div>
-                <div className='formItem textInput'>
+                <div className="formItem textInput">
                     <label>Phone Number:</label>
-                    <input className='formValue'
+                    <input
+                        className="formValue"
                         type="text"
                         name="phoneNumber"
                         value={formData.phoneNumber}
@@ -90,9 +96,10 @@ export default function SignUp() {
                         required
                     />
                 </div>
-                <div className='formItem textInput'>
+                <div className="formItem textInput">
                     <label>Password:</label>
-                    <input className='formValue'
+                    <input
+                        className="formValue"
                         type="password"
                         name="password"
                         value={formData.password}
@@ -100,8 +107,15 @@ export default function SignUp() {
                         required
                     />
                 </div>
+                <div className="btnDiv">
+                    <button className="flow-buttons step-one left-arrow" disabled>
+                        <LeftArrow />
+                    </button>
+                    <button className="flow-buttons step-one right-arrow" type="submit">
+                        <RightArrow />
+                    </button>
+                </div>
             </form>
-            <div className='btnDiv'><button className='submitButton' type="submit">Create account</button></div>
         </div>
     );
 }
