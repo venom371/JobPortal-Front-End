@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
-import './SignIn.css';
+import '../CSS/SignIn.css';
 
 export default function SignUp() {
     const [formData, setFormData] = useState({

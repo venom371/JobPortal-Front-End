@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Image from "../Images/ImageInput";
-import "./AddImages.css";
+import "../CSS/AddImages.css";
 
 var handleChange;
 var handleImageClick;

@@ -1,8 +1,8 @@
 import dynamic from 'next/dynamic';
 
-const SignUpComponent = dynamic(() => import('../../Components/SignUp'));
+const SignUpComponent = dynamic(() => import('../../../Components/SignIn'));
 
-export default function SignUp() {
+export default function SignIn() {
     return (
         <div className='home'>
             <SignUpComponent />
