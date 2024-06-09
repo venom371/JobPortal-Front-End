@@ -23,75 +23,15 @@ body, html {
     overflow: auto;
 }
 
-.signUpBox {
-    padding: 16px;
-    /* min-height: 200px; */
-    background-color: aquamarine;
-    height: 330px;
-
-    width: 270.8px;
-    border: 2px solid;
-    border-color: rgb(68, 62, 62);
-    border-radius: 20px;
-    /* display: flex;
-    flex-direction: column; */
-}
-
-
-
-@media screen and (min-height: 700px) {}
-
-.signUpForm {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-}
-
-.flow-buttons {
-    padding: 5px;
-    width: 37px;
-    background-color: aquamarine;
-    color: aliceblue;
-    border: 2px solid;
-    border-color: rgb(68, 62, 62);
-    border-radius: 10px;
-}
-
-.flow-buttons:hover {
-    background-color: aliceblue;
-    color: blue;
-}
-
-.btnDiv {
-    display: flex;
-    justify-content: center;
-    margin-top: 18px;
-    gap: 5px;
-}
-
-.formValue {
-    outline: none;
-    padding: 0 4px;
-    border-radius: 5px;
-    border: 1.5px solid cadetblue;
-}
-
-.radioInput {
-    display: flex;
-    flex-direction: row;
-}
-
-.textInput {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 5px;
-}
-
-.femaleRadioBtn {
-    margin-left: 3px;
-}
-
-input[type="radio"]:checked {
-    accent-color: grey;
-
-}
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .fade-in {
+    animation: fadeIn 1.5s ease-out;
+  }

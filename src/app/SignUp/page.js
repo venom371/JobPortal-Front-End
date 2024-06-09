@@ -1,11 +1,27 @@
-import dynamic from 'next/dynamic';
+"use client";
 
-const SignUpComponent = dynamic(() => import('../../Components/SignUp'));
+import dynamic from 'next/dynamic';
+import loadable from '@loadable/component';
+import React, { useState, useEffect, Suspense } from "react";
+
+const SignUpComponent = dynamic(() => import('../../Components/SignUp'), { ssr: false });
+const AddImages = loadable(() => import('../../Components/AddImages'));
 
 export default function SignUp() {
+    const [signUpStep, setSignUpStep] = useState(1);
+
+    useEffect(() => {
+        AddImages.preload();
+    }, []);
+
+    const handleNextClick = () => {
+        setSignUpStep(signUpStep + 1);
+    };
+
     return (
         <div className='home'>
-            <SignUpComponent />
+            {signUpStep == 1 && <SignUpComponent handleNextClick={handleNextClick} />}
+            {signUpStep == 2 && <AddImages setSignUpStep={setSignUpStep} signUpStep = {signUpStep} />}
         </div>
     )
 }

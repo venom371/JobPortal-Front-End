@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import RightArrow from "../Images/RightArrow";
-import LeftArrow from "../Images/LeftArrow";
+import RightArrow from "./RightArrow";
+import "../CSS/SignUp.css"
 
-export default function SignUp() {
+export default function SignUp({handleNextClick}) {
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -23,8 +23,8 @@ export default function SignUp() {
     };
 
     const handleSubmit = (e) => {
+        handleNextClick();
         e.preventDefault();
-        console.log("Form Data:", formData);
     };
 
     return (
@@ -58,7 +58,7 @@ export default function SignUp() {
                         <input
                             type="radio"
                             name="gender"
-                            value={formData.gender}
+                            value={"Male"}
                             onChange={handleChange}
                             required
                         />
@@ -68,7 +68,7 @@ export default function SignUp() {
                         <input
                             type="radio"
                             name="gender"
-                            value={formData.gender}
+                            value={"Female"}
                             onChange={handleChange}
                             required
                         />
@@ -108,9 +108,6 @@ export default function SignUp() {
                     />
                 </div>
                 <div className="btnDiv">
-                    <button className="flow-buttons step-one left-arrow" disabled>
-                        <LeftArrow />
-                    </button>
                     <button className="flow-buttons step-one right-arrow" type="submit">
                         <RightArrow />
                     </button>

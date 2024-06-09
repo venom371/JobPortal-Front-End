@@ -44,7 +44,7 @@ export default function ImageStacker() {
 
     return (
         <div>
-            <div className="addImagesContainer">
+            <div className="addImagesContainer fade-in">
                 {images.length > 0 ? <ImageStack /> : <InputFromImage />}
             </div>
         </div>
