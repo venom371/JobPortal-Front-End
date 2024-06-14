@@ -3,6 +3,7 @@
 import React, { useRef, useState } from "react";
 import Image from "../Images/ImageInput";
 import "../CSS/AddImages.css";
+import LeftArrow from "./LeftArrow";
 
 var handleChange;
 var handleImageClick;
@@ -44,6 +45,11 @@ export default function ImageStacker() {
 
     return (
         <div>
+            <div className="btnDiv">
+                <button className="flow-buttons step-one right-arrow">
+                    <LeftArrow />
+                </button>
+            </div>
             <div className="addImagesContainer fade-in">
                 {images.length > 0 ? <ImageStack /> : <InputFromImage />}
             </div>
@@ -72,7 +78,7 @@ function ImageStack() {
     return (
         <div className="image-stack">
             <img
-                src={profilePic.dataURL} 
+                src={profilePic.dataURL}
                 alt={"profile pic"}
                 className={"profile-pic image"}
             />

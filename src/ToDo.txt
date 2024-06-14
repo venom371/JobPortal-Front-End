@@ -1,0 +1,8 @@
+1. Create backend system using springboot ad java
+2. Use mongodb for database
+3. Add a 3rd step to signup for otp verification
+
+
+Enhancements (to be taken much much later)
+1. Upgrade REST APIs to GraphQL APIs
+2. Move local deployment to cloud maybe by using docker and kubernates on google cloud
