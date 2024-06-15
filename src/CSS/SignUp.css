@@ -56,7 +56,3 @@ input[type="radio"]:checked {
 .flow-buttons.right-arrow {
     margin-left: auto;
 }
-
-.flow-buttons.step-one.left-arrow {
-    display: none;
-}

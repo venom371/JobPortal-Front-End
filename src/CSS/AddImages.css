@@ -36,3 +36,7 @@
     border-radius: 20px;
     max-height: 438px;
 }
+
+.btnDiv.add-images {
+    padding-left: 16px;
+}

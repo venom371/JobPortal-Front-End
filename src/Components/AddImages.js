@@ -10,7 +10,7 @@ var handleImageClick;
 var imageInput;
 var images, setImages;
 
-export default function ImageStacker() {
+export default function ImageStacker({handlePrevClick}) {
     [images, setImages] = useState([]);
 
     imageInput = useRef(null);
@@ -38,15 +38,20 @@ export default function ImageStacker() {
             setImages((prevImages) => [...prevImages, ...imageArray]);
         });
     };
-
+    
     handleImageClick = () => {
         imageInput.current.click();
     };
-
+    
+    const prevStep = (e) => {
+        handlePrevClick();
+        e.preventDefault();
+    }
+    
     return (
         <div>
-            <div className="btnDiv">
-                <button className="flow-buttons step-one right-arrow">
+            <div className="btnDiv add-images">
+                <button className="flow-buttons step-two left-arrow" onClick={prevStep}>
                     <LeftArrow />
                 </button>
             </div>
@@ -59,7 +64,7 @@ export default function ImageStacker() {
 
 function InputFromImage() {
     return (
-        <div className="uploadImages" onClick={handleImageClick}>
+        <div className="uploadImages">
             <Image />
             <input
                 type="file"
@@ -85,3 +90,4 @@ function ImageStack() {
         </div>
     );
 }
+

@@ -33,5 +33,5 @@ body, html {
   }
   
   .fade-in {
-    animation: fadeIn 1.5s ease-out;
+    animation: fadeIn 1s ease-out;
   }

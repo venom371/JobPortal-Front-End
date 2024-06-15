@@ -28,7 +28,7 @@ export default function SignUp({handleNextClick}) {
     };
 
     return (
-        <div className="signUpBox">
+        <div className="signUpBox fade-in">
             <form className="signUpForm" onSubmit={handleSubmit}>
                 <div className="formItem textInput">
                     <label>First Name:</label>
