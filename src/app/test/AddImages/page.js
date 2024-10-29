@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const Whyyyyyy = dynamic(() => import('../../../Components/AddImages'));
+const Whyyyyyy = dynamic(() => import('../../../Components/SignUpAddImages'));
 
 export default function AddImages() {
     return (

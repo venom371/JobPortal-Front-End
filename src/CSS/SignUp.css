@@ -20,19 +20,6 @@
     width: auto;
 }
 
-.btnDiv {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 16px;
-}
-
-.formValue {
-    outline: none;
-    padding: 0 4px;
-    border-radius: 5px;
-    border: 1.5px solid cadetblue;
-}
-
 .radioInput {
     display: flex;
     flex-direction: row;

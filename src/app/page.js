@@ -1,8 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const SignUpComponent = dynamic(() => import('../Components/SignUp'));
-const SignInComponent = dynamic(() => import('../Components/SignIn'));
-const Whyyyyyy = dynamic(() => import('../Components/AddImages'));
+import SignInComponent from "../Components/SignIn";
 
 export default function Home() {
     return (
