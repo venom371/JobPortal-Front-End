@@ -1,7 +1,7 @@
 "use client";
 
 import dynamic from 'next/dynamic';
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useCallback, useEffect, Suspense } from "react";
 
 import SignUpComponent from "../../Components/SignUp";
 import WaitingSkeleton from "../../Components/WaitingSkeleton";
@@ -15,7 +15,6 @@ const UserDescption = dynamic(() => import("@/Components/SignUpDescription"), {
 
 export default function SignUp() {
     const [signUpStep, setSignUpStep] = useState(1);
-
     const [formData, setFormData] = useState({
         firstName: "wef",
         lastName: "wefewf",
@@ -23,28 +22,29 @@ export default function SignUp() {
         email: "wf@k.com",
         phoneNumber: "wevwev",
         password: "wev",
+        dob: null
     });
-
     const [socialMediaLinks, setSocialMediaLinks] = useState(['']);
-
     const [aboutUser, setAboutUser] = useState('');
-
     const [images, setImages] = useState([]);
 
-    const handleNextClick = () => {
-        setSignUpStep(signUpStep + 1);
-    };
-
-    const handlePrevClick = () => {
-        setSignUpStep(signUpStep - 1);
-    };
+    const handleNextClick = useCallback(() => {
+        setSignUpStep(prevStep => prevStep + 1);
+    }, []);
+    
+    const handlePrevClick = useCallback(() => {
+        setSignUpStep(prevStep => prevStep - 1);
+    }, []);
+    
 
     const createNewUser = () => {
-        console.log("formData: " + formData);
-        console.log(formData);
-        console.log(images);
-        console.log("user social media links: " + socialMediaLinks);
-        console.log("about user: " + aboutUser);
+        
+    }
+
+    const formProps = {
+        formData,
+        setFormData,
+        handleNextClick
     }
 
     const addImageProps = {
@@ -63,11 +63,11 @@ export default function SignUp() {
         createNewUser
     };
 
+    const signUpSteps = [<SignUpComponent {...formProps} />, <AddImages {...addImageProps} />, <UserDescption {...userDescriptionProps} />];
+
     return (
         <div className='home'>
-            {signUpStep == 1 && <SignUpComponent formData={formData} setFormData={setFormData} handleNextClick={handleNextClick} />}
-            {signUpStep == 2 && <AddImages {...addImageProps}/>}
-            {signUpStep == 3 && <UserDescption {...userDescriptionProps}/>}
+            {signUpSteps[signUpStep - 1]}
         </div>
     )
 }

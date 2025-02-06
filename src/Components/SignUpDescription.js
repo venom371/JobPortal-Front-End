@@ -1,16 +1,22 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import React, { useState } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { CirclePlus, MinusCircle } from "lucide-react";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import { toast } from 'sonner';
+import { toast } from "sonner";
 
-export default function SignUpDescription({ socialMediaLinks, setSocialMediaLinks, aboutUser, setAboutUser, handlePrevClick, createNewUser }) {
-
+export default function SignUpDescription({
+    socialMediaLinks,
+    setSocialMediaLinks,
+    aboutUser,
+    setAboutUser,
+    handlePrevClick,
+    createNewUser
+}) {
     const handleAddInput = () => {
         // Check if the last input is non-empty before adding a new one
         if (socialMediaLinks[socialMediaLinks.length - 1] !== "") {
@@ -25,17 +31,15 @@ export default function SignUpDescription({ socialMediaLinks, setSocialMediaLink
     const handleChange = (e) => {
         const { value } = e.target;
         const words = value.trim().split(" ");
-        if(words.length <= maxWords){
+        if (words.length <= maxWords) {
             setAboutUser(value);
-            if(words.length == 1 && words[0] == ""){
+            if (words.length == 1 && words[0] == "") {
                 setTotalWords(0);
-            }
-            else{
+            } else {
                 setTotalWords(words.length);
             }
-        }
-        else{
-            toast.error(`words count exceed ${maxWords}`)
+        } else {
+            toast.error(`words count exceed ${maxWords}`);
         }
     };
 
@@ -58,15 +62,11 @@ export default function SignUpDescription({ socialMediaLinks, setSocialMediaLink
     return (
         <Card className="w-[90%] md:w-[450px]">
             <CardHeader>
-                <CardTitle>
-                    Step 3:
-                </CardTitle>
-                <CardDescription>
-                    Tell us about yourself.
-                </CardDescription>
+                <CardTitle>Step 3:</CardTitle>
+                <CardDescription>Tell us about yourself.</CardDescription>
             </CardHeader>
             <CardContent>
-                <div className='flex flex-col gap-4'>
+                <div className="flex flex-col gap-4">
                     <div>
                         <Label htmlFor="latest-link">Social Media</Label>
                         <div>
@@ -76,11 +76,15 @@ export default function SignUpDescription({ socialMediaLinks, setSocialMediaLink
                                         value={value}
                                         onChange={(e) => handleInputChange(index, e.target.value)}
                                         placeholder={`Link ${index + 1}`}
-                                        className="w-full"
+                                        className="w-full truncate"
                                         id={index === socialMediaLinks.length - 1 ? "latest-link" : undefined}
                                     />
                                     {index === socialMediaLinks.length - 1 && (
-                                        <Button className='[&_svg]:size-7 w-11' onClick={handleAddInput} variant="outline">
+                                        <Button
+                                            className="[&_svg]:size-7 w-11"
+                                            onClick={handleAddInput}
+                                            variant="outline"
+                                        >
                                             <CirclePlus />
                                         </Button>
                                     )}
@@ -88,7 +92,9 @@ export default function SignUpDescription({ socialMediaLinks, setSocialMediaLink
                                         <Button
                                             onClick={() => handleRemoveOrClearInput(index)}
                                             variant="outline"
-                                            className={`absolute h-[35px] w-11 ${index === socialMediaLinks.length - 1 ? "right-14" : "right-1"} opacity-0 group-hover:opacity-100 transition-opacity duration-200 [&_svg]:size-7 hover:text-red-500 text-red-500 hover:bg-background border-none`}
+                                            className={`absolute h-[35px] w-11 ${
+                                                index === socialMediaLinks.length - 1 ? "right-14" : "right-1"
+                                            } opacity-0 group-hover:opacity-100 transition-opacity duration-200 [&_svg]:size-7 hover:text-red-500 text-red-500 hover:bg-background border-none`}
                                         >
                                             <MinusCircle />
                                         </Button>
@@ -97,18 +103,21 @@ export default function SignUpDescription({ socialMediaLinks, setSocialMediaLink
                             ))}
                         </div>
                     </div>
-                    <Textarea placeholder={`Describe yourself in ${maxWords} words.`} 
-                        className="mt-3 h-[175px]" 
+                    <Textarea
+                        placeholder={`Describe yourself in ${maxWords} words.`}
+                        className="mt-3 h-[175px]"
                         value={aboutUser}
                         onChange={handleChange}
                     />
                 </div>
-                <p className='text-xs text-muted-foreground pl-[5px] pt-[8px]'>{`${totalWords}/${maxWords} words`}</p>
+                <p className="text-xs text-muted-foreground pl-[5px] pt-[8px]">{`${totalWords}/${maxWords} words`}</p>
                 <div className="flex justify-between pt-6">
-                    <Button variant="outline" onClick={() => handlePrevClick()}>Prev</Button>
+                    <Button variant="outline" onClick={() => handlePrevClick()}>
+                        Prev
+                    </Button>
                     <Button onClick={createNewUser}>Finish</Button>
                 </div>
             </CardContent>
-        </Card >
+        </Card>
     );
 }

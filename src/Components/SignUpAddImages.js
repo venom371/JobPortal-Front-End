@@ -69,7 +69,10 @@ export default function ImageGrid({ images, setImages, handlePrevClick, handleNe
                                             <Button
                                                 variant="icon"
                                                 className="absolute top-1 right-1"
-                                                onClick={() => removeImage(index)}
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    removeImage(index);
+                                                }}
                                             >
                                                 <CircleX className="h-5 w-5 text-white" />
                                             </Button>
