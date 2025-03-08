@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
                 >
                     {children}
                     <ThemeToggleButton></ThemeToggleButton>
-                    <Toaster richColors icons={{
+                    <Toaster richColors closeButton icons={{
                         error: <ShieldAlert />
                     }} />
                 </ThemeProvider>

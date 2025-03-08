@@ -15,7 +15,7 @@ export default function SignUpDescription({
     aboutUser,
     setAboutUser,
     handlePrevClick,
-    createNewUser
+    createUser
 }) {
     const handleAddInput = () => {
         // Check if the last input is non-empty before adding a new one
@@ -115,7 +115,7 @@ export default function SignUpDescription({
                     <Button variant="outline" onClick={() => handlePrevClick()}>
                         Prev
                     </Button>
-                    <Button onClick={createNewUser}>Finish</Button>
+                    <Button onClick={createUser}>Finish</Button>
                 </div>
             </CardContent>
         </Card>
