@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
-import "../CSS/SignUp.css";
+import React from "react";
+import "@/css/SignUp.css";
 import "react-day-picker/style.css";
 import Link from "next/link";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -38,7 +37,6 @@ export default function SignUpComponent({
     };
 
     const handleSubmit = (e) => {
-        console.log(formData);
         handleNextClick();
         e.preventDefault();
     };
@@ -184,7 +182,7 @@ export default function SignUpComponent({
                 </CardContent>
                 <CardFooter className="flex justify-between">
                     <Button variant="outline" asChild>
-                        <Link href="/">Cancel</Link>
+                        <Link href="/login">Cancel</Link>
                     </Button>
                     <Button type="submit">Next</Button>
                 </CardFooter>

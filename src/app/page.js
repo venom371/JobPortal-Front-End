@@ -1,11 +1,5 @@
-import dynamic from 'next/dynamic';
-
-import SignInComponent from "../Components/SignIn";
-
-export default function Home() {
+export default function AdminPage() {
     return (
-        <div className='home'>
-            <SignInComponent />
-        </div>
+        <div>this is outer page</div>
     );
 }

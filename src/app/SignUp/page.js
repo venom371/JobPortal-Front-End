@@ -3,21 +3,19 @@
 import dynamic from "next/dynamic";
 import React, { useState, useCallback, useEffect, Suspense } from "react";
 
-import SignUpComponent from "../../Components/SignUp";
-import WaitingSkeleton from "../../Components/WaitingSkeleton";
+import SignUpComponent from "./SignUp";
+import WaitingSkeleton from "../../components/WaitingSkeleton";
 import { createNewUser } from "@/services/SignUpServices";
+import { toast } from "sonner";
+import { useRouter } from 'next/navigation';
 
-const AddImages = dynamic(() => import("@/Components/SignUpAddImages"), {
+const AddImages = dynamic(() => import("@/app/signup/SignUpAddImages"), {
     loading: () => <WaitingSkeleton />
 });
 
-const UserDescption = dynamic(() => import("@/Components/SignUpDescription"), {
+const UserDescption = dynamic(() => import("@/app/signup/SignUpDescription"), {
     loading: () => <WaitingSkeleton />
 });
-
-import { getImageFiles } from "../../lib/utils";
-
-
 
 export default function SignUp() {
     const [signUpStep, setSignUpStep] = useState(1);
@@ -33,8 +31,17 @@ export default function SignUp() {
     const [socialMediaLinks, setSocialMediaLinks] = useState([""]);
     const [aboutUser, setAboutUser] = useState("");
     const [images, setImages] = useState([]);
+    const router = useRouter();
 
-    const createUser = () => createNewUser(formData, images);
+    const createUser = async () => {
+        try{
+            await createNewUser(formData, images);
+            router.replace("/");
+        }
+        catch(error){
+            toast.error(error.message || "User creation failed");
+        }
+    }
 
     const handleNextClick = useCallback(() => {
         setSignUpStep((prevStep) => prevStep + 1);
@@ -66,7 +73,11 @@ export default function SignUp() {
         createUser
     };
 
-    const signUpSteps = [<SignUpComponent {...formProps} />, <AddImages {...addImageProps} />, <UserDescption {...userDescriptionProps} />];
+    const signUpSteps = [
+        <SignUpComponent key="sign-up-step" {...formProps} />, 
+        <AddImages key="add-images-step" {...addImageProps} />, 
+        <UserDescption key="user-desc-step" {...userDescriptionProps} />
+    ];
 
     return <div className="home">{signUpSteps[signUpStep - 1]}</div>;
 }

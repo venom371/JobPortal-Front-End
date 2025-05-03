@@ -9,6 +9,7 @@ export function cn(...inputs) {
 export async function doPostRequest(url, payload) {
     let res = await fetch(url, {
         method: "POST",
+        credentials: 'include',
         headers: {
             "Content-Type": "application/json" // Crucial change here
         },
@@ -19,8 +20,7 @@ export async function doPostRequest(url, payload) {
         return res;
     } else {
         const error = await res.json();
-        toast.error(error.message);
         console.error("Error:", error.message);
-        throw new Error(error);
+        throw new Error(error.message);
     }
 }

@@ -6,7 +6,7 @@ import { useTheme } from "next-themes";
 import { Button } from "@/components/ui/button";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
-import "../CSS/globals.css";
+import "../css/globals.css";
 
 export function ThemeToggleButton() {
     const { theme, setTheme } = useTheme();

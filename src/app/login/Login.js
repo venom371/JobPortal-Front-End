@@ -2,16 +2,21 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
-import "../CSS/SignIn.css";
+import "@/css/SignIn.css";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { loginUser } from "@/services/SignUpServices";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
     const [formData, setFormData] = useState({
-        email: "",
+        emailOrPhoneNumber: "",
         password: ""
     });
+
+    const router = useRouter();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -21,22 +26,28 @@ export default function SignUp() {
         }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form Data:", formData);
-    };
+        try{
+            await loginUser(formData);
+            router.replace("/admin");
+        }
+        catch(error){
+            toast.error(error.message || "User login failed");
+        }
+    }
 
     return (
         <div className="signInBox w-[270px]">
-            <form className="signInForm w-full grid items-center gap-2" onSubmit={handleSubmit}>
+            <form className="signInForm w-full grid items-center gap-2" onSubmit={(e) => handleSubmit(e)}>
                 <div className="formItem w-full flex flex-col space-y-1.5">
                     <Label htmlFor="email-id">Email ID</Label>
                     <Input
                         className="signIn-input-element"
                         id="email-id"
-                        type="email"
-                        name="email"
-                        value={formData.email}
+                        type="text"
+                        name="emailOrPhoneNumber"
+                        value={formData.emailOrPhoneNumber}
                         onChange={handleChange}
                         required
                     />
@@ -57,7 +68,7 @@ export default function SignUp() {
                     <Button className="submitButton w-[103px]" type="submit">
                         Sign in
                     </Button>
-                    <Link className="newUserLink" href="/SignUp">
+                    <Link className="newUserLink" href="/signup">
                         New User? Create Account
                     </Link>
                 </div>

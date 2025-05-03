@@ -31,6 +31,7 @@ export async function createNewUser(formData, images) {
         const uploadUrl = Constants.contextUrl + "/users/uploadImages";
         let result = await fetch(uploadUrl, {
             method: "POST",
+            credentials: 'include',
             body: formDataForImages
         });
     
@@ -39,8 +40,19 @@ export async function createNewUser(formData, images) {
         }
     }
     catch(error){
-        console.error("Creation failed:", error);
-        toast.error(error.message || "User creation failed");
-        throw error; // Re-throw for further handling
+        throw error;
+    }
+}
+
+export async function loginUser(formData) {
+    let url = Constants.contextUrl + "/users/login";
+    try{
+        let res = await doPostRequest(url, formData);
+        if(res.ok){
+            toast.success("User logged in successfully");
+        }
+    }
+    catch(error){
+        throw error;
     }
 }

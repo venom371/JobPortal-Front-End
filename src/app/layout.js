@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
-import "../CSS/globals.css";
-import { ThemeProvider } from "@/Components/theme-provider";
-import { ThemeToggleButton } from "@/Components/ThemeToggleButton";
+import "../css/globals.css";
+import { ThemeProvider } from "@/components/theme-provider";
+import { ThemeToggleButton } from "@/components/ThemeToggleButton";
 import { Toaster } from 'sonner';
 import { ShieldAlert } from "lucide-react";
 
