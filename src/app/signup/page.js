@@ -9,11 +9,11 @@ import { createNewUser } from "@/services/SignUpServices";
 import { toast } from "sonner";
 import { useRouter } from 'next/navigation';
 
-const AddImages = dynamic(() => import("@/app/signup/SignUpAddImages"), {
+const AddImages = dynamic(() => import("@/app/temp/SignUpAddImages"), {
     loading: () => <WaitingSkeleton />
 });
 
-const UserDescption = dynamic(() => import("@/app/signup/SignUpDescription"), {
+const UserDescption = dynamic(() => import("@/app/temp/SignUpDescription"), {
     loading: () => <WaitingSkeleton />
 });
 
